@@ -31,8 +31,9 @@ for root, subFolders, files in os.walk(rootdir):
         if os.path.splitext(os.path.basename(filename))[1] != '.dat':
             continue
         file_path = os.path.relpath(os.path.join(root,filename), rootdir)
-        if file_path not in ix:
-            to_process.add(os.path.relpath(file_path, rootdir))
+        abs_file_path = os.path.join(rootdir, file_path)
+        if abs_file_path not in ix:
+            to_process.add(abs_file_path)
 
 print("Processing %d (new) data files" % len(to_process))
 for datafile_path in to_process:

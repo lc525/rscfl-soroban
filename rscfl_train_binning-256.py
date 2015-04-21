@@ -21,8 +21,10 @@ rcParams['figure.figsize'] = 22,10
 print(sys.argv[1])
 bm_dataset = pd.read_pickle(sys.argv[1])
 virt_dataset = pd.read_pickle(sys.argv[2])
+base_path = ""
 if len(sys.argv) > 3:
     f = open(sys.argv[3], "w")
+    base_path = os.path.dirname(sys.argv[3])
 else:
     f = open("trained_gauss2.pickle", "w")
 
@@ -104,7 +106,7 @@ fig2 = plt.figure()
 plt.scatter(train_data['x'], train_data['y'] , marker='+')
 xmax = train_data['x'].quantile(0.99)
 fig2.axes[0].set_xlim(0, xmax)
-savefig("training_ds.png")
+savefig(os.path.join(base_path, "training.scatter.png"))
 
 # training gaussian process
 ng = 1
@@ -129,4 +131,4 @@ plt.fill(np.concatenate([x, x[::-1]]),
          alpha=.5, fc='b', ec='None', label='95% confidence interval')
 plt.axis([0, 2e8, 0, 2e8])
 plt.legend(loc='upper left')
-plt.savefig("gaussian_process5.png")
+plt.savefig(os.path.join(base_path,"training.predict.png"))
