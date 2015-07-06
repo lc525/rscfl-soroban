@@ -64,9 +64,9 @@ xmax_ns = 2e8
 ymax_cyc = xmax_ns
 plt.plot([0, xmax_ns], [0, ymax_cyc], 'k-')
 plt.plot([0, xmax_ns], [0, ymax_cyc*0.66], 'k--')
-plt.text(xmax_ns - 0.41e8, 1.1e8, "66\%", size='smaller')
+plt.text(xmax_ns - 0.41e8, 1.1e8, "66\%")
 plt.plot([0, xmax_ns], [0, ymax_cyc*0.3], 'k--')
-plt.text(xmax_ns - 0.41e8, 0.53e8, "30\%", size='smaller')
+plt.text(xmax_ns - 0.41e8, 0.53e8, "30\%")
 plt.axis([0.7e8, 1.65e8, 0, 1.3e8])
 ax.tick_params(axis='x', colors='black')
 ax.tick_params(axis='y', colors='black')
